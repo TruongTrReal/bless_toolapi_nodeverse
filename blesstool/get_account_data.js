@@ -20,7 +20,7 @@ async function processAccount(account) {
 
   try {
     console.log(`Making API request for email: ${email}`);
-    const response = await axios.post('http://localhost:3000/get-token-and-pubkey', requestBody);
+    const response = await axios.post('http://localhost:3456/get-token-and-pubkey', requestBody);
 
     if (response.data) {
       const { token, pubKey } = response.data;

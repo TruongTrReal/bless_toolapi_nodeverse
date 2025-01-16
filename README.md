@@ -61,7 +61,7 @@ Tự động hóa quá trình farming trong Nodeverse với nhiều tài khoản
 
 8. **Bật API**:
    ```bash
-   nano app.js
+   node app.js
    ```
    thấy API online ở port 3456 là Ok
 
@@ -84,7 +84,9 @@ Tự động hóa quá trình farming trong Nodeverse với nhiều tài khoản
 
 10. **Chạy tool bless**:
    ```bash
-   node start.js
+   npm install
+   node get_account_data.js
+   node bless.js
    ```
 
 ## Lưu Ý
