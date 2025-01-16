@@ -65,6 +65,7 @@ async function getTokenAndPubKey(email, password) {
     chromeOptions.addArguments('sec-fetch-site=none');
     chromeOptions.addArguments('sec-fetch-user=?1');
     chromeOptions.addArguments('upgrade-insecure-requests=1');
+    chromeOptions.setChromeBinaryPath('/usr/bin/chromium-browser');
 
 
     // Initialize the WebDriver with the chrome options including the extension
