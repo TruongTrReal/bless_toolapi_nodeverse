@@ -4,7 +4,7 @@ const { getLatestOtpsForEmails } = require('./imapService'); // Import the funct
 const { getTokenAndPubKey, getToken } = require('./get_token'); // Import the getPubKeyFromToken function
 
 const app = express();
-const port = 3000;
+const port = 3456;
 
 // Set a timeout for all routes (e.g., 30 seconds timeout)
 const TIMEOUT_LIMIT = 300000; // 300 seconds timeout
