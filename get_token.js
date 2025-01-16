@@ -43,6 +43,7 @@ async function getTokenAndPubKey(email, password) {
   try {
     // Set up Chrome options to include the extension (bless.crx)
     const chromeOptions = new chrome.Options();
+    // chromeOptions.setChromeBinaryPath('/usr/bin/chromedriver');
     chromeOptions.addExtensions(['./bless.crx']);
     chromeOptions.addArguments('--headless');
     chromeOptions.addArguments('--window-size=1920x1080'); // Set custom window size
