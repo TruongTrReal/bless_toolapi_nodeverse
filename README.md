@@ -86,7 +86,7 @@ Tự động hóa quá trình farming trong Nodeverse với nhiều tài khoản
    ```bash
    npm install
    node get_account_data.js
-   node bless.js
+   node start.js
    ```
 
 ## Lưu Ý
