@@ -12,7 +12,7 @@ async function getOtpFromApi(email, password) {
   try {
     for (let attempt = 1; attempt <= retries; attempt++) {
       console.log(`Attempt ${attempt}: Requesting OTP for email: ${email}`);
-      const response = await axios.post('http://localhost:3000/latest-otps', {
+      const response = await axios.post('http://localhost:3456/latest-otps', {
         emails: [{ email: email, password: password }]
       });
 
