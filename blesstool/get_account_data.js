@@ -1,6 +1,12 @@
 const fs = require('fs');
 const axios = require('axios');
 
+// Utility function to sleep for a given number of milliseconds
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 // Function to process each account asynchronously
 async function processAccount(account) {
   const [email, password] = account.split(':');
@@ -38,7 +44,8 @@ async function processAccount(account) {
   } catch (error) {
     console.error(`Error fetching data for ${email}:`, error.message);
   }
-
+  // add a sleep for 5s here
+  await sleep(5000);
   return null; // Return null in case of failure
 }
 

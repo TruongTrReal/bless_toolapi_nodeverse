@@ -1,3 +1,13 @@
 /node_modules
+blesstool/node_modules
 package-lock.json
-/chrome-win
+accounts.txt
+idnode.txt
+proxy.txt
+config.txt
+blesstool/accounts.txt
+blesstool/config.txt
+blesstool/idnode.txt
+blesstool/proxy.txt
+
+
