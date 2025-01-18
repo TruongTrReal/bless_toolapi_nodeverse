@@ -62,7 +62,7 @@ async function main() {
         const name = `bless-${proxyUrl}`;
 
         execSync(
-          `node bless.js --name ${name} -- ${NODE_IDS[i]} ${proxyUrl}`
+          `pm2 start bless.js --name ${name} -- ${NODE_IDS[i]} ${proxyUrl}`
         );
         console.log(`-> Started ${NODE_IDS[i]} with proxy ${proxyUrl}`);
       }

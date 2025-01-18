@@ -16,6 +16,13 @@ Tự động hóa quá trình farming trong Nodeverse với nhiều tài khoản
    cd bless_toolapi_nodeverse
    ```
 
+   Nếu đã cài rồi thì chạy lệnh dưới để pull code mới nhất:
+   ```bash
+   git checkout -- .
+   git clean -fd
+   git pull
+   ```
+
 3. **Cài đặt các phụ thuộc**:
    ```bash
    npm install
@@ -26,35 +33,31 @@ Tự động hóa quá trình farming trong Nodeverse với nhiều tài khoản
 4. **Kiểm tra phiên bản Chromium**:
    Kiểm tra nếu Chromium đã được cài đặt:
    ```bash
-   chromium --version
+   chromium-browser --version
+   chromedriver --version
    ```
-   Nếu chưa có, cài đặt Chromium:
+   Nếu chưa có Chromium, cài đặt Chromium:
    ```bash
    sudo apt install chromium-browser
    ```
 
-5. **Kiểm tra và cài đặt Chromedriver**:
-   Kiểm tra nếu Chromedriver đã được cài đặt:
-   ```bash
-   chromedriver --version
-   ```
-   Nếu chưa có, cài đặt Chromedriver:
+   Nếu chưa có Chromedriver, cài đặt Chromedriver:
    ```bash
    sudo apt install chromium-chromedriver
    ```
 
-6. **Đảm bảo đường dẫn đúng**:
+5. **Đảm bảo đường dẫn đúng**:
    Kiểm tra đường dẫn của Chromium và Chromedriver:
    ```bash
    which chromium
    which chromedriver
    ```
-   Đảm bảo rằng đường dẫn là `/snap/bin/chromium` và `/usr/bin/chromedriver`.
+   Đảm bảo rằng đường dẫn là `/snap/bin/chromium-browser` và `/usr/bin/chromedriver`.
 
 7. **Thay đổi đường dẫn nếu cần**:
-   Nếu đường dẫn khác, mở file `node_handler/automation.js` và thay đổi đường dẫn `binaryPath` cho đúng với đường dẫn của bạn:
+   Nếu đường dẫn khác, mở file `get_token.js` và thay đổi đường dẫn `binaryPath` cho đúng với đường dẫn của bạn:
    ```javascript
-   binaryPath: '/usr/bin/chromium', // Thay đổi nếu cần
+   binaryPath: '/usr/bin/chromium-browser', // Thay đổi nếu cần
    ```
 
 ## Cấu Hình
@@ -66,16 +69,33 @@ Tự động hóa quá trình farming trong Nodeverse với nhiều tài khoản
    thấy API online ở port 3456 là Ok
 
 8. **Vào tool**:
+   KHÔNG TẮT TERMINAL ĐANG CHẠY API 3456, bật cái khác và chạy lệnh
    cd vào trong tool:
    ```bash
    cd blesstool
    ```
 
-9. **Cấu hình accounts và proxy**:
-   Chỉnh sửa file `accounts.txt` và `proxy.txt`:
+9. **Cấu hình accounts**:
+   Thêm account vào trong file này, NHỚ định dạng email@email.com:password123
+   Chỉnh sửa file `accounts.txt`:
    ```bash
    nano accounts.txt
    ```
+
+   Thêm account xong thì chạy luôn
+   ```bash
+   npm install
+   node get_account_data.js
+   ```
+
+9. **Cấu hình proxy**:
+   Check số lượng account có token:
+   ```bash
+   nano idnode.txt
+   ```
+   Đếm số lượng id node, x5 lần là ra số proxy cần lấy để dán vào proxy
+
+   Chỉnh sửa file `proxy.txt`:
    ```bash
    nano proxy.txt
    ```
@@ -84,9 +104,7 @@ Tự động hóa quá trình farming trong Nodeverse với nhiều tài khoản
 
 10. **Chạy tool bless**:
    ```bash
-   npm install
-   node get_account_data.js
-   node start.js
+   node window.js
    ```
 
 ## Lưu Ý
