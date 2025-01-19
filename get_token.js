@@ -195,9 +195,6 @@ async function getTokenAndPubKey(email, password) {
   let driver;
   try {
     // Set up Chrome options to include the extension (bless.crx)
-    const proxy = getRandomProxy();
-    console.log('Using proxy:', proxy);
-
     const chromeOptions = new chrome.Options();
     chromeOptions.addExtensions(['./bless.crx']);
     chromeOptions.addArguments('--headless');
