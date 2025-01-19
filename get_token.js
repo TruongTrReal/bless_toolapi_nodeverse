@@ -244,7 +244,7 @@ async function getTokenAndPubKey(email, password) {
 
     // Wait for OTP input window to pop up
     console.log('Waiting for OTP input window...');
-    await sleep(60000);  // Allow 45 seconds for OTP to arrive
+    await sleep(30000);  // Allow 45 seconds for OTP to arrive
 
     // Call the API to get the OTP
     console.log('Calling FUNCTION to get OTP...');
