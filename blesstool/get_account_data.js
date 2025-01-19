@@ -6,7 +6,6 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
 // Function to process each account asynchronously
 async function processAccount(account) {
   const [email, password] = account.split(':');
@@ -44,8 +43,7 @@ async function processAccount(account) {
   } catch (error) {
     console.error(`Error fetching data for ${email}:`, error.message);
   }
-  // add a sleep for 5s here
-  await sleep(5000);
+  
   return null; // Return null in case of failure
 }
 
@@ -61,15 +59,21 @@ async function getAccountData() {
 
     console.log(`Found ${accounts.length} accounts in "accounts.txt".`);
 
-    // Process accounts concurrently using Promise.all
-    const results = await Promise.all(accounts.map(account => processAccount(account)));
+    const results = [];
+    for (const account of accounts) {
+      const result = await processAccount(account);
+      if (result !== null) {
+        results.push(result);
+      }
 
-    // Filter out null results (failed accounts)
-    const validResults = results.filter(result => result !== null);
+      // Wait for 1 minute before processing the next account
+      console.log('Waiting for 1 minute before processing the next account...');
+      await sleep(500);
+    }
 
     // Extract idNodes (pubKeys) and configTokens (tokens)
-    const idNodes = validResults.map(result => result.pubKey);
-    const configTokens = validResults.map(result => result.token);
+    const idNodes = results.map(result => result.pubKey);
+    const configTokens = results.map(result => result.token);
 
     // Write the results to idnode.txt and config.txt
     if (idNodes.length > 0) {
